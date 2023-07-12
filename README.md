@@ -14,4 +14,4 @@ Paper title: [ISOCC'23] Fault_bound
 Paper URL: **(to be updated later)**
 
 # Overview
-![An Overview of the evaluation](https://github.com/xyz123479/ITC-CSCC_23-EPA_ECC/blob/master/EPA%20ECC_Overview.png)
+![An Overview of the Fault_bound](https://github.com/xyz123479/ISOCC_23-Fault-Bound/blob/main/Fault_bound.png)
