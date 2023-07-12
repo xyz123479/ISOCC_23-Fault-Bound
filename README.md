@@ -47,7 +47,7 @@ Paper URL: **(to be updated later)**
 
 # ECC configuration
 - OD-ECC: (136, 128) Hamming SEC code **[1]** 'or' SEC code with bounded_Fault **[2]**
-- RL-ECC: Chipkill-correct ECC
+- RL-ECC: Chipkill-correct ECC **[3-4]**
 
 # Error pattern configuration
 - SE(SBE): per-chip Single Bit Error
