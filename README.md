@@ -17,39 +17,53 @@ Paper URL: **(to be updated later)**
 ![An Overview of the Fault_bound](https://github.com/xyz123479/ISOCC_23-Fault-Bound/blob/main/Fault_bound.png)
 
 # Code flows (Fault_sim.cpp)
-- 1. Setting ECC-block configuration & error scenarios.
+- 1. Reading OD-ECC, RL-ECC H-Matrix.txt: It's fine not to use RL-ECC H-Matrix.txt.
 - 2. Setting output function name: output.S file.
-- 3. **(Start loop)** HBM2E ECC-block setup
-- 4. Initialize all data in ECC-block to 0
-- 5. Error injection: Errors occur based on the error scenarios. **(Caution!) This evaluation has no fault!**
-- 6. Apply **OD-ECC (On-Die ECC)**
->> Prior work: Apply the Hsiao SEC-DED code of (104, 96) to each ECC block.
->> 
->> EPA-ECC: Apply the RS SSC-DSD code of [39, 36] to an ECC block.
-- 7. Report CE/DUE/SDC results.
-- 8. **(End loop)** Derive final results.
+- 3. **(Start loop)** DDR5 ECC-DIMM setup
+- 4. Initialize all data in 10 chips to 0: Each chip has 136 bits of data + redundancy.
+- 5. Error injection: Errors occur based on the following probabilities:
+>> SE: 40%, DE: 30%, SCE: 14%, SE+SE: 16%
+- 6. **(Fill in the code)** Apply OD-ECC: Implementation
+>> Apply the Hamming SEC code of (136, 128) to each chip.
 
-# DDR5 ECC-DIMM configuration [1]
-- Data: 256 bit
-- System ECC redundancy: 32 bit
-- On-Die ECC redundancy: 24 bit
-- Num of DQ: 64 (Psuedo-channel mode)
-- Num of Redundancy-DQ: 8
-- Burst Length: 4
+>> After running OD-ECC, the redundancy of OD-ECC does not come out of the chip (128bit data).
+- 7. **(Fill in the code)** Apply RL-ECC
+>> Run (80, 64) RL-ECC by bundling two beats.
+>> Please feel free to use any ECC code.
+>> 16 Burst Length (BL) creates one memory transfer block (64B cacheline + 16B redundancy).
+>> In DDR5 x4 DRAM, because of internal prefetching, only 64bit of data from each chip's 128bit data is actually transferred to the cache.
+>> For this, create two memory transfer blocks for 128-bit data and compare them.
+- 8. Report CE/DUE/SDC results.
+- 9. **(End loop)** Derive final results.
 
-# Getting Started
-- $ make clean
-- $ make
-- $ python run.py
+# DIMM configuration (per-sub channel)
+- DDR5 ECC-DIMM
+- Num of rank: 1
+- Beat length: 40 bit
+- Burst length: 16
+- Num of data chips: 8
+- Num of parity chips: 2
+- Num of DQ: 4 (x4 chip)
 
-# Answer (.S files)
-- CE: detected and corrected error
-- DUE: detected but uncorrected error
-- SDC: Silent Data Corruption
+# ECC configuration
+- OD-ECC: (136, 128) Hamming SEC code **[1]** 'or' SEC code with bounded_Fault **[2]**
+- RL-ECC: Chipkill-correct ECC
 
-# RUN_NUM is in Fault_sim.cpp file (iteration count)
-- #define RUN_NUM 100000000
+# Error pattern configuration
+- SE(SBE): per-chip Single Bit Error
+- DE(DBE): per-chip Double Bit Error
+- CHIPKILL(SCE): Single Chip Error (All Random)
+
+# Error Scenario configuration
+- SE(SBE): Among 10 chips, there's a single bit error (SE[Single Bit Error]) occurring in just one chip, with the remaining 9 chips having no errors
+- DE(DBE): Among 10 chips, there's a double bit error (DE[Double Bit Error]) occurring in just one chip, with the remaining 9 chips having no errors
+- CHIPKILL(SCE): Among 10 chips, there's a random error (SCE [Single Chip Error]) occurring in just one chip, with the remaining 9 chips having no errors. Errors can occur up to a maximum of 136 bits
+- SE(SBE)+SE(SBE): Among 10 chips, there's a single bit error (SE[Single Bit Error]) occurring in each of two chips, with the remaining 8 chips having no errors
 
 # References
-- **[1]** Chun, Ki Chul, et al. "A 16-GB 640-GB/s HBM2E DRAM with a data-bus window extension technique and a synergetic on-die ECC scheme." IEEE Journal of Solid-State Circuits 56.1 (2020): 199-211.
-- **[2]** Reed, Irving S., and Gustave Solomon. "Polynomial codes over certain finite fields." Journal of the society for industrial and applied mathematics 8.2 (1960): 300-304.
+- **[1]** Hamming, Richard W. "Error detecting and error correcting codes." The Bell system technical journal 29.2 (1950): 147-160.
+- **[2]** Criss, Kjersten, et al. "Improving memory reliability by bounding DRAM faults: DDR5 improved reliability features." The International Symposium on Memory Systems. 2020.
+- **[3]** Reed, Irving S., and Gustave Solomon. "Polynomial codes over certain finite fields." Journal of the society for industrial and applied mathematics 8.2 (1960): 300-304.
+- **[4]** https://www.amd.com/system/files/TechDocs/42301_15h_Mod_00h-0Fh_BKDG.pdf
+- **[5]** Pontarelli, Salvatore, et al. "Low delay single symbol error correction codes based on reed solomon codes." IEEE transactions on computers 64.5 (2014): 1497-1501.
+
