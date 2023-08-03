@@ -28,7 +28,9 @@ Paper URL: **(to be updated later)**
 >> After running OD-ECC, the redundancy of OD-ECC does not come out of the chip (128bit data).
 - 7. Apply RL-ECC
 >> 16 Burst Length (BL) creates one memory transfer block (64B cacheline + 16B redundancy).
+
 >> In DDR5 x4 DRAM, because of internal prefetching, only 64bit of data from each chip's 128bit data is actually transferred to the cache.
+
 >> For this, **create two memory transfer blocks for 128-bit data and compare them.**
 - 8. Report CE/DUE/SDC results.
 - 9. **(End loop)** Derive final results.
