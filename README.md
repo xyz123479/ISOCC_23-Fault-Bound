@@ -44,20 +44,14 @@ Paper URL: **(to be updated later)**
 
 # ECC configuration
 - OD-ECC: (136, 128) Hamming SEC code **[1]** 'or' SEC code with bounded_Fault **[2]**
-- RL-ECC: Chipkill-correct ECC **[3-4]**
+- RL-ECC: Chipkill-correct ECC using RS (Reed-Solomon) code **[3]** **Restrained mode**
 
 # Error pattern configuration
-- SE(SBE): per-chip Single Bit Error
-- DE(DBE): per-chip Double Bit Error
-- SWE: per-chip Single Word Error
-- SPE: per-chip Single Pin Error
-- CHIPKILL(SCE): Single Chip Error (All Random)
-
-# Error Scenario configuration
-- SE(SBE): Among 10 chips, there's a single bit error (SE[Single Bit Error]) occurring in just one chip, with the remaining 9 chips having no errors
-- DE(DBE): Among 10 chips, there's a double bit error (DE[Double Bit Error]) occurring in just one chip, with the remaining 9 chips having no errors
-- CHIPKILL(SCE): Among 10 chips, there's a random error (SCE [Single Chip Error]) occurring in just one chip, with the remaining 9 chips having no errors. Errors can occur up to a maximum of 136 bits
-- SE(SBE)+SE(SBE): Among 10 chips, there's a single bit error (SE[Single Bit Error]) occurring in each of two chips, with the remaining 8 chips having no errors
+- SE: per-chip Single bit Error
+- MBBE: per-chip Muli bit Bounded Error
+- SW: per-chip Single Word Error (all 4 bits)
+- SP: per-chip Single Pin Error (More than 2 bits)
+- CHIPKILL: Single Chip error (All random)
 
 # Getting Started
 - $ make clean
@@ -69,5 +63,4 @@ Paper URL: **(to be updated later)**
 - **[2]** Criss, Kjersten, et al. "Improving memory reliability by bounding DRAM faults: DDR5 improved reliability features." The International Symposium on Memory Systems. 2020.
 - **[3]** Reed, Irving S., and Gustave Solomon. "Polynomial codes over certain finite fields." Journal of the society for industrial and applied mathematics 8.2 (1960): 300-304.
 - **[4]** https://www.amd.com/system/files/TechDocs/42301_15h_Mod_00h-0Fh_BKDG.pdf
-- **[5]** Pontarelli, Salvatore, et al. "Low delay single symbol error correction codes based on reed solomon codes." IEEE transactions on computers 64.5 (2014): 1497-1501.
 
