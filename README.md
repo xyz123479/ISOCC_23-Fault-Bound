@@ -49,7 +49,7 @@ Paper URL: **(to be updated later)**
 - RL-ECC: Chipkill-correct ECC using RS (Reed-Solomon) code **[3]**
 >> Applying **Restrained mode [4]**
 
-# Error pattern configuration
+# Error pattern configuration (2 chip errors)
 - SE: per-chip Single bit Error
 - MBBE: per-chip Muli bit Bounded Error
 - SW: per-chip Single Word Error (all 4 bits)
