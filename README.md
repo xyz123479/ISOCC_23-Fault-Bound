@@ -54,7 +54,7 @@ Paper URL: **(to be updated later)**
 - MBBE: per-chip Muli bit Bounded Error
 - SW: per-chip Single Word Error (all 4 bits)
 - SP: per-chip Single Pin Error (More than 2 bits)
-- CHIPKILL: per-chip error (All random)
+- CHIPKILL: per-chip error (All random, bit flips for 50%)
 
 # Getting Started
 - $ make clean
