@@ -44,7 +44,7 @@ Paper URL: **(to be updated later)**
 
 # ECC configuration
 - OD-ECC: (136, 128) Hamming SEC code **[1]** 'or' SEC code with bounded_Fault **[2]**
-- RL-ECC: Chipkill-correct ECC using RS (Reed-Solomon) code **[3]** **Restrained mode**
+- RL-ECC: Chipkill-correct ECC using RS (Reed-Solomon) code **[3]** **Restrained mode [4]**
 
 # Error pattern configuration
 - SE: per-chip Single bit Error
@@ -62,5 +62,5 @@ Paper URL: **(to be updated later)**
 - **[1]** Hamming, Richard W. "Error detecting and error correcting codes." The Bell system technical journal 29.2 (1950): 147-160.
 - **[2]** Criss, Kjersten, et al. "Improving memory reliability by bounding DRAM faults: DDR5 improved reliability features." The International Symposium on Memory Systems. 2020.
 - **[3]** Reed, Irving S., and Gustave Solomon. "Polynomial codes over certain finite fields." Journal of the society for industrial and applied mathematics 8.2 (1960): 300-304.
-- **[4]** https://www.amd.com/system/files/TechDocs/42301_15h_Mod_00h-0Fh_BKDG.pdf
+- **[4]** Kim, Dongwhee, et al. "Unity ECC: Unified Memory Protection Against Bit and Chip Errors." Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis. 2023.
 
