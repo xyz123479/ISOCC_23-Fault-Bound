@@ -21,18 +21,15 @@ Paper URL: **(to be updated later)**
 - 2. Setting output function name: output.S file.
 - 3. **(Start loop)** DDR5 ECC-DIMM setup
 - 4. Initialize all data in 10 chips to 0: Each chip has 136 bits of data + redundancy.
-- 5. Error injection: Errors occur based on the following probabilities:
->> SE: 40%, DE: 30%, SCE: 14%, SE+SE: 16%
-- 6. **(Fill in the code)** Apply OD-ECC: Implementation
+- 5. Error injection: Scenario-based Error injection
+- 6. Apply OD-ECC: Implementation
 >> Apply the Hamming SEC code of (136, 128) to each chip.
 
 >> After running OD-ECC, the redundancy of OD-ECC does not come out of the chip (128bit data).
-- 7. **(Fill in the code)** Apply RL-ECC
->> Run (80, 64) RL-ECC by bundling two beats.
->> Please feel free to use any ECC code.
+- 7. Apply RL-ECC
 >> 16 Burst Length (BL) creates one memory transfer block (64B cacheline + 16B redundancy).
 >> In DDR5 x4 DRAM, because of internal prefetching, only 64bit of data from each chip's 128bit data is actually transferred to the cache.
->> For this, create two memory transfer blocks for 128-bit data and compare them.
+>> For this, **create two memory transfer blocks for 128-bit data and compare them.**
 - 8. Report CE/DUE/SDC results.
 - 9. **(End loop)** Derive final results.
 
@@ -52,6 +49,8 @@ Paper URL: **(to be updated later)**
 # Error pattern configuration
 - SE(SBE): per-chip Single Bit Error
 - DE(DBE): per-chip Double Bit Error
+- SWE: per-chip Single Word Error
+- SPE: per-chip Single Pin Error
 - CHIPKILL(SCE): Single Chip Error (All Random)
 
 # Error Scenario configuration
