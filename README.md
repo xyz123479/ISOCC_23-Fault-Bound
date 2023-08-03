@@ -9,7 +9,7 @@
 - Email: xyz12347976@gmail.com
 - Google Scholar: https://scholar.google.com/citations?user=8xzqA8YAAAAJ&hl=ko&oi=ao
 
-Paper title: [ISOCC'23] Fault_bound
+Paper title: [ISOCC'23] Synergistic Integration: An Optimal Combination of On-Die and Rank-Level ECC for Enhanced Reliability
 
 Paper URL: **(to be updated later)**
 
