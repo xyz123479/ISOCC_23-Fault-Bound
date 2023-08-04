@@ -17,13 +17,13 @@ Paper URL: **(to be updated later)**
 ![An Overview of the Fault_bound](https://github.com/xyz123479/ISOCC_23-Fault-Bound/blob/main/Fault_bound.png)
 
 # Code flows (Fault_sim.cpp)
-- 1. Reading OD-ECC, RL-ECC H-Matrix.txt: It's fine not to use RL-ECC H-Matrix.txt.
-- 2. Setting output function name: output.S file.
+- 1. Reading OD-ECC H-Matrix.txt
+- 2. Setting output function name: output.S file
 - 3. **(Start loop)** DDR5 ECC-DIMM setup
-- 4. Initialize all data in 10 chips to 0: Each chip has 136 bits of data + redundancy.
+- 4. Initialize all data in 10 chips to 0: Each chip has 136 bits of data + redundancy
 - 5. Error injection: Scenario-based Error injection
 - 6. Apply OD-ECC: Implementation
->> Apply the Hamming SEC code of (136, 128) to each chip.
+>> Apply the Hamming SEC code of (136, 128) to each chip
 
 >> After running OD-ECC, the redundancy of OD-ECC does not come out of the chip (128bit data).
 - 7. Apply RL-ECC
