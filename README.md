@@ -48,6 +48,7 @@ Paper URL: **(to be updated later)**
 - OD-ECC: (136, 128) Hamming SEC code **[1]** 'or' SEC code with bounded_Fault **[2]**
 - RL-ECC: Chipkill-correct ECC using RS (Reed-Solomon) code **[3]**
 >> Applying **Restrained mode [4]**
+- Detail examples are found in **Configuration (ECC, Error pattern).pptx**
 
 # Error pattern configuration (2 chip errors)
 - SE: per-chip Single bit Error
