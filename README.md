@@ -1,5 +1,7 @@
 # ISOCC'23-Fault bound
 
+# This project is licensed under the terms of the MIT license
+
 # Author
 
 **Wonyeong Jung** 
