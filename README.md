@@ -14,7 +14,7 @@
 
 Paper title: [ISOCC'23] Synergistic Integration: An Optimal Combination of On-Die and Rank-Level ECC for Enhanced Reliability
 
-Paper URL: **(to be updated later)**
+Paper URL: https://ieeexplore.ieee.org/document/10396592
 
 # Overview
 ![An Overview of the Fault_bound](https://github.com/xyz123479/ISOCC_23-Fault-Bound/blob/main/Fault_bound.png)
